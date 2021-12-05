@@ -2,8 +2,11 @@
 
 export default {
   props:{
-      catalog_data:{
-
+      products:{
+          type: Object,
+          default(){
+              return {}
+          }
       }
   }
   ,
@@ -19,17 +22,18 @@ export default {
 <template>
     <div class="catalog-item">
         <figure>
-            <img src="../assets/catalog/ssr.png" alt="">
+            <img :src="require('../assets/catalog/'+products.url)" class="catalog-img">
         
         <figcaption>
             <span class="item-text"><br>
-                Монета СССР 1 рубль <br> 1980г
+                <span class="name">{{products.name}}</span> <br> {{products.year}}г.
                 <br><br>
-                155P
+                {{products.price}}₽
             </span>
             <br><br>
-            <div class="btn"><button>Купить</button></div>
+            
         </figcaption>
+        <div class="btn"><button>Купить</button></div>
         </figure>
     </div>
     
@@ -52,11 +56,23 @@ figure{
 }
 .catalog-item{
     width:350px;
-
+    height:450px;
 }
 
 .btn{
     margin-left:8%;
+    margin-top:-13%;
+}
+
+.catalog-img{
+    width:250px;
+    height:250px;
+}
+
+figcaption{
+    width:345px;
+    height:195px;
+    
 }
 
 button{

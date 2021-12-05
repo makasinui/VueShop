@@ -1,5 +1,6 @@
 <script>
 import NewsVue from "./News.vue"
+import { mapActions } from "vuex"
 export default {
   modules:{
       
@@ -10,25 +11,18 @@ export default {
       return {
           isMenu:1,
           isNews:1,
-          news:[
-            {
-                header:"1 декабря",
-                main:"Новость Новость Новость Новость Новость Новость Новость Новость Новость Новость Новость Новость",
-                article:"f"
-            },
-            {
-                header:"2 декабря",
-                main:"Новость Новость Новость Новость Новость Новость Новость Новость Новость Новость Новость Новость",
-                article:"s"
-            }
-          ],
           
   }
 },
   methods:{
-
+      ...mapActions([
+          'GET_NEWS_SHORT_FROM_API'
+      ]),
   },
-  components:{NewsVue}
+  components:{NewsVue},
+  mounted(){
+      this.GET_NEWS_SHORT_FROM_API()
+  }
 }
 
 
@@ -101,7 +95,7 @@ export default {
         <div class="item" v-show="isNews">
                 <ul>
                         <NewsVue
-                        v-for="newss in news"
+                        v-for="newss in this.$store.state.news_short"
                         :key="newss.article"
                         :news_list="newss"
                         />
@@ -129,7 +123,7 @@ export default {
     max-width:100%;
     border:1px solid gray;
     position:absolute;
-    top:15%;
+    top:18%;
     z-index:1;
 }
 

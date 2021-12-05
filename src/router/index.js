@@ -4,6 +4,7 @@ import AboutUs from '../components/AboutUs.vue'
 import Delivery from '../components/Delivery.vue'
 import Payment from '../components/Payment.vue'
 import Contacts from '../components/Contacts.vue'
+import News from '../components/Ns.vue'
 const routes = [
 
   {
@@ -30,7 +31,12 @@ const routes = [
     path:'/contacts',
     name:'Contacts',
     component:Contacts
-  }
+  },
+  {
+    path:'/news',
+    name:'News',
+    component:News
+  },
 ]
 
 const router = createRouter({

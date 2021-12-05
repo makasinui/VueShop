@@ -9,14 +9,18 @@ export default {
             isOpen:0,
             login:'',
             password:'',
-            correct:false
+            correct:false,
+            text:''
         }
     },
     methods:{
         check(){
             if(this.login=='admin' && this.password=='admin'){
                 this.correct = !this.correct
-                
+                this.$router.push('/news')
+            } else{
+                if(this.login!='' && this.password!='')
+                this.text = 'Неправильный логин/пароль'
             }
         }
     }
@@ -37,11 +41,13 @@ export default {
                 ✕
             </div>
             <div class="login">
-                <form>
-                    Login<input type="text" v-model="login" style="margin-left:23px;" name="login" id="login">
-                    Password<input type="password" v-model="password" name="pass" id="pass">
-                    <router-link :to='{name:"Contacts",params:{login:"admin",password:"admin"}}'><button @click.prevent="check">Войти</button></router-link>
+                <form action="" @submit.prevent="check">
+                    <input required type="text" v-model="login"  name="login" id="login" placeholder="Login"> *
+                    <input required type="password" v-model="password"  name="pass" id="pass" placeholder="Password"> * <br>
+                    <button type="submit" value="Войти">Войти</button>
                 </form>
+                <br>
+                {{this.text}}
             </div>
         </div>
     </div>
@@ -49,6 +55,10 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+
+input,button{
+    margin-left:50px;
+}
     .modal-{
         position:fixed;
         top:0;
@@ -66,7 +76,7 @@ export default {
     .modal-show{
         width: 100%;
         max-width: 500px;
-        height: 150px;
+        height: 180px;
         margin: 250px;
         background: #f9f9f9;
         border-radius: 3px;

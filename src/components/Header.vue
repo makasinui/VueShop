@@ -54,7 +54,7 @@ export default {
                         <router-link to="/contacts">
                             <li>Контакты</li>
                         </router-link>
-                        <router-link to="/contacts">
+                        <router-link to="/news">
                             <li>Новости</li>
                         </router-link>
                 </ul>

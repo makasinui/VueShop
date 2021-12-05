@@ -1,5 +1,6 @@
 <script>
 import CatalogItem from './CatalogItem.vue'
+import { mapActions } from "vuex"
 export default {
   components:{
     CatalogItem,
@@ -10,7 +11,16 @@ export default {
       return {
          
   }
-}
+  
+},
+  methods:{
+      ...mapActions([
+          'GET_PRODUCTS_FROM_API'
+      ]),
+  },
+  mounted(){
+      this.GET_PRODUCTS_FROM_API()
+  }
 }
 
 </script>
@@ -22,10 +32,11 @@ export default {
         Популярные товары
     </div>
     <div class="catalog-items">
-        <CatalogItem/>
-        <CatalogItem/>
-        <CatalogItem/>
-        <CatalogItem/>
+        <CatalogItem
+            v-for="product in this.$store.state.products"
+            :key="product.article"
+            :products="product"
+       />
 
     </div>
     
@@ -49,6 +60,7 @@ export default {
 
 .catalog-items{
     margin-top: 5%;
+
     display: flex;
 }
 </style>
