@@ -11,6 +11,9 @@ export default createStore({
     products_asia:[]
   },
   mutations: {
+    SET_CART:(state,product) =>{
+      state.cart.push(product)
+    },
     SET_NEWS_SHORT_TO_STATE:(state, news_short)=>{
       state.news_short = news_short;
     },
@@ -108,6 +111,9 @@ export default createStore({
       console.log(error);
       return error;
     })
+  },
+  ADD_TO_CART({commit}, product) {
+    commit('SET_CART', product)
   }
 },
   getters:{

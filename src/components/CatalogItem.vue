@@ -9,12 +9,6 @@ export default {
                   
               }
           }
-      },
-      item:{
-          type: String,
-          default(){
-              return ''
-          }
       }
   }
   ,
@@ -25,7 +19,7 @@ export default {
 },
 methods:{
     addToCart(){
-        this.$emit('addToCart',this.item)
+        this.$emit('addToCart',this.products);
     }
 }
 }
@@ -46,7 +40,7 @@ methods:{
             <br><br>
             
         </figcaption>
-        <div class="btn"><button @click="addToCart">Купить</button></div>
+        <div class="btn"><button @click="addToCart" >Купить</button></div>
         </figure>
     </div>
     
@@ -66,6 +60,22 @@ figure{
     line-height: 21px;
     color: #000000;
 
+}
+.catalog-item{
+    width:350px;
+    height:450px;
+}
+
+
+.catalog-img{
+    width:250px;
+    height:250px;
+}
+
+figcaption{
+    width:345px;
+    height:195px;
+    
 }
 .btn{
     margin-left:8%;
@@ -92,24 +102,6 @@ button{
         cursor:pointer;
     }
 }
-
-.catalog-item{
-    width:350px;
-    height:450px;
-}
-
-
-.catalog-img{
-    width:250px;
-    height:250px;
-}
-
-figcaption{
-    width:345px;
-    height:195px;
-    
-}
-
 
 .name{
     display: inline-block;

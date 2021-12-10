@@ -2,6 +2,7 @@
 import SearchVue from "./Search.vue"
 import CartVue from "./Cart.vue"
 import Login from './Login.vue'
+import { mapGetters } from "vuex"
 export default {
     components:{
         SearchVue
@@ -13,6 +14,11 @@ export default {
       return {
 
       }
+  },
+  computed:{
+      ...mapGetters([
+          'CART'
+      ])
   }
 }
 </script>
@@ -33,7 +39,8 @@ export default {
             <Login />
 
             <div class="cart">
-                <CartVue />
+                <CartVue 
+                :cart_data='CART' />
             </div>
         </article>
 

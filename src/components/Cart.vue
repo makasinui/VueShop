@@ -1,5 +1,6 @@
 <script>
 import CartItem from "./CartItem.vue"
+import { mapGetters } from "vuex"
 export default {
   components:{
       CartItem
@@ -10,6 +11,19 @@ export default {
           cart:0,
           isOpen:false
   }
+},
+props:{
+    cart_data:{
+        type:Array,
+        default(){
+            return []
+        }
+    }
+},
+computed:{
+    ...mapGetters([
+        'CART'
+    ])
 }
 }
 
@@ -19,18 +33,38 @@ export default {
 
 <div>
     <span class="cart" @click.prevent="isOpen=!isOpen">Корзина</span>
+    <div v-show="CART.length" class="dot">•</div>
     <div class="modal" v-show="isOpen">
         <div class="modal-show">
             <div class="close" @click.prevent="isOpen=!isOpen">
                 ✕
             </div>
+            <div class="cart__item">
+                <CartItem
+                v-for="item in cart_data"
+                :key="item.article"
+                :cart_item_data="item" />
+            </div>
+            
         </div>
     </div>
-    <cart-item></cart-item>
+    
 </div>
 </template>
 
 <style lang="scss" scoped>
+
+.cart__item{
+    margin-top: 5%;
+    margin-bottom:5%;
+}
+.dot{
+    position: absolute;
+    top:20px;
+    right:223px;
+    color:rgb(199, 55, 55);
+    font-size: 50px;
+}
 
 .cart{
     text-transform: uppercase;
@@ -47,7 +81,13 @@ export default {
     background-color: red;
     border-radius: 50%;
 }
-
+.close{
+    position: absolute;
+    cursor:pointer;
+    top:1%;
+    right:3%;
+    font-size: 30px;
+}
 .modal{
         position:fixed;
         top:0;
@@ -64,8 +104,9 @@ export default {
     }
     .modal-show{
         width: 100%;
-        max-width: 500px;
-        height: 180px;
+        max-width: 1500px;
+        min-height:600px;
+        height: auto;
         margin: 250px;
         background: #f9f9f9;
         border-radius: 3px;

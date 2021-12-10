@@ -15,10 +15,11 @@ export default {
 },
   methods:{
       ...mapActions([
-          'GET_PRODUCTS_FROM_API'
+          'GET_PRODUCTS_FROM_API',
+          'ADD_TO_CART'
       ]),
-      addToCart(){
-          this.$emit('addToCart',this.products)
+      addToCart(data){
+          this.ADD_TO_CART(data)
       }
   },
   mounted(){
@@ -39,7 +40,8 @@ export default {
             v-for="product in this.$store.state.products"
             :key="product.article"
             :products="product"
-       ><div class="btn"><button @click="addToCart">Купить</button></div></CatalogItem>
+            @addToCart="addToCart"
+       ></CatalogItem>
 
     </div>
     
