@@ -31,7 +31,7 @@ export default createStore({
   },
   actions: {
     GET_NEWS_SHORT_FROM_API({commit}){
-      return axios('http://localhost:3000/news_short', {
+      return axios('https://json-servermakasinui.herokuapp.com/news_short', {
         method:"GET"
       })
       .then((news_short) =>{
@@ -44,7 +44,7 @@ export default createStore({
       })},
       
     GET_PRODUCTS_FROM_API({commit}){
-      return axios('http://localhost:3000/products', {
+      return axios('https://json-servermakasinui.herokuapp.com/products', {
         method:"GET"
       })
       .then((products) =>{
@@ -57,7 +57,7 @@ export default createStore({
       })
     },
     GET_NEWS_FROM_API({commit}){
-      return axios('http://localhost:3000/news', {
+      return axios('https://json-servermakasinui.herokuapp.com/news', {
         method:"GET"
       })
       .then((news) =>{
@@ -70,7 +70,7 @@ export default createStore({
       })
     },
     GET_PRODUCTS_SSSR_FROM_API({commit}){
-      return axios('http://localhost:3000/products_sssr', {
+      return axios('https://json-servermakasinui.herokuapp.com/products_sssr', {
         method:"GET"
       })
       .then((products_sssr) =>{
@@ -83,7 +83,7 @@ export default createStore({
       })
     },
   GET_PRODUCTS_RUS_FROM_API({commit}){
-    return axios('http://localhost:3000/products_rus', {
+    return axios('https://json-servermakasinui.herokuapp.com/products_rus', {
       method:"GET"
     })
     .then((products_rus) =>{
@@ -96,7 +96,7 @@ export default createStore({
     })
   },
   GET_PRODUCTS_ASIA_FROM_API({commit}){
-    return axios('http://localhost:3000/products_asia', {
+    return axios('https://json-servermakasinui.herokuapp.com/products_asia', {
       method:"GET"
     })
     .then((products_asia) =>{
