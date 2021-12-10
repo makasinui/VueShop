@@ -2,6 +2,7 @@ import { createStore } from 'vuex'
 import axios from 'axios'
 export default createStore({
   state: {
+    cart:[],
     products:[],
     news_short:[],
     news:[],
@@ -127,6 +128,9 @@ export default createStore({
     },
     PRODUCTS_ASIA(state){
       return state.products_asia;
+    },
+    CART(state){
+      return state.cart;
     }
   },
   modules: {
