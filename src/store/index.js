@@ -4,7 +4,10 @@ export default createStore({
   state: {
     products:[],
     news_short:[],
-    news:[]
+    news:[],
+    products_sssr:[],
+    products_rus:[],
+    products_asia:[]
   },
   mutations: {
     SET_NEWS_SHORT_TO_STATE:(state, news_short)=>{
@@ -15,6 +18,15 @@ export default createStore({
     },
     SET_NEWS_TO_STATE:(state, news)=>{
       state.news = news;
+    },
+    SET_PRODUCTS_SSSR_TO_STATE:(state, products_sssr)=>{
+      state.products_sssr = products_sssr
+    },
+    SET_PRODUCTS_RUS_TO_STATE:(state, products_rus)=>{
+      state.products_rus = products_rus
+    },
+    SET_PRODUCTS_ASIA_TO_STATE:(state, products_asia)=>{
+      state.products_asia = products_asia
     }
   },
   actions: {
@@ -56,8 +68,47 @@ export default createStore({
         console.log(error);
         return error;
       })
-    }
+    },
+    GET_PRODUCTS_SSSR_FROM_API({commit}){
+      return axios('http://localhost:3000/products_sssr', {
+        method:"GET"
+      })
+      .then((products_sssr) =>{
+        commit('SET_PRODUCTS_SSSR_TO_STATE',products_sssr.data)
+        return products_sssr
+      })
+      .catch((error)=>{
+        console.log(error);
+        return error;
+      })
+    },
+  GET_PRODUCTS_RUS_FROM_API({commit}){
+    return axios('http://localhost:3000/products_rus', {
+      method:"GET"
+    })
+    .then((products_rus) =>{
+      commit('SET_PRODUCTS_RUS_TO_STATE',products_rus.data)
+      return products_rus
+    })
+    .catch((error)=>{
+      console.log(error);
+      return error;
+    })
   },
+  GET_PRODUCTS_ASIA_FROM_API({commit}){
+    return axios('http://localhost:3000/products_asia', {
+      method:"GET"
+    })
+    .then((products_asia) =>{
+      commit('SET_PRODUCTS_ASIA_TO_STATE',products_asia.data)
+      return products_asia
+    })
+    .catch((error)=>{
+      console.log(error);
+      return error;
+    })
+  }
+},
   getters:{
     NEWS_SHORT(state){
       return state.news_short;
@@ -67,6 +118,15 @@ export default createStore({
     },
     NEWS(state){
       return state.news;
+    },
+    PRODUCTS_SSSR(state){
+      return state.products_sssr;
+    },
+    PRODUCTS_RUS(state){
+      return state.products_rus;
+    },
+    PRODUCTS_ASIA(state){
+      return state.products_asia;
     }
   },
   modules: {

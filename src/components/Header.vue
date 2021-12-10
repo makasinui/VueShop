@@ -23,7 +23,7 @@ export default {
     <div class="content">
         <article class="top">
             <div class="logo">
-               <a href=""><img src="../assets/header/logo.png" alt=""></a>
+               <router-link to="/"><img src="../assets/header/logo.png" alt=""></router-link>
             </div>
 
             <div class="search">

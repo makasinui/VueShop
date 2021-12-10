@@ -8,7 +8,7 @@
     font-family:'Roboto';
 }
 
-
+/**/
 a{
     text-decoration: none;
     color:black;
@@ -51,6 +51,15 @@ li{
     max-width: 100%;
     margin:0 auto; 
     padding:0 3px;  
+}
+
+.catalog-monets{
+    display: flex;
+    width:1450px;
+    flex-wrap:wrap;
+    div{
+        margin-top:30px;
+    }
 }
 
 @media screen and (max-width:1600px) {

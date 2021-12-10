@@ -75,6 +75,11 @@ figcaption{
     
 }
 
+.name{
+    display: inline-block;
+    width:300px;
+}
+
 button{
     width: 187px;
     height: 52px;
@@ -88,7 +93,7 @@ button{
     line-height: 21px;
     color: #FFFFFF;
     text-transform: uppercase;
-
+    margin-top: 20px;
     &:hover{
         transition: 0.5s all;
         background:#1554a7;

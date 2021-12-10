@@ -24,9 +24,11 @@ export default {
         {{news_list.main}}    
     </div>
     <a href="">
-        <div class="news-text news-full">
-            читать далее..
-        </div>
+        <router-link to='/news'>
+            <div class="news-text news-full">
+                читать далее..
+            </div>
+        </router-link>
     </a>
 </li>
 </template>

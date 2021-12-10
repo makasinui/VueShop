@@ -31,7 +31,7 @@ export default {
 <style lang="scss" scoped>
     
     .header{
-        color:#2400FF;
+        color:#4d3eac;
         font-size: 45px;
         font-family: 'Roboto';
     }

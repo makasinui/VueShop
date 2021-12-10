@@ -5,6 +5,9 @@ import Delivery from '../components/Delivery.vue'
 import Payment from '../components/Payment.vue'
 import Contacts from '../components/Contacts.vue'
 import News from '../components/Ns.vue'
+import CatalogSSSR from '../components/CatalogSSSR.vue'
+import CatalogRUS from '../components/CatalogRUS.vue'
+import CatalogASIA from '../components/CatalogASIA.vue'
 const routes = [
 
   {
@@ -37,6 +40,21 @@ const routes = [
     name:'News',
     component:News
   },
+  {
+    path:'/sssr',
+    name:'SSSR',
+    component:CatalogSSSR
+  },
+  {
+    path:'/rus',
+    name:'RUS',
+    component:CatalogRUS
+  },
+  {
+    path:'/asia',
+    name:'ASIA',
+    component:CatalogASIA
+  }
 ]
 
 const router = createRouter({

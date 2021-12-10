@@ -38,48 +38,33 @@ export default {
             <transition>
                 <div class="item" v-show="isMenu">
                       <ul>
-                          <a href="">
+                          <router-link to='/sssr'>
                               <li class="border">
                                   <div class="text">Монеты СССР</div>
                                   <div class="item-img">
                                       <img src="../assets/Menu/arrow.png" alt="">
                                   </div>
                               </li>
-                          </a>
-                          <a href="">
-                              <li class="border">
-                                  <div class="text">Современная Россия</div>
-                                  <div class="item-img">
-                                      <img src="../assets/Menu/arrow.png" alt="">
-                                  </div>
-                              </li>
-                          </a>
-        
-                            <a href="">
+                          </router-link>
+                          
+                            <router-link to='/rus'>
                                 <li class="border">
-                                    <div class="text">Монеты Азии</div>
+                                    <div class="text">Современная Россия</div>
                                     <div class="item-img">
                                         <img src="../assets/Menu/arrow.png" alt="">
                                     </div>
                                 </li>
-                            </a>
-        
-                            <a href="">
-                                <li class="border">
-                                  <div class="text">Монеты Америки</div>
-                                  <div class="item-img">
-                                      <img src="../assets/Menu/arrow.png" alt="">
-                                  </div>
-                                </li>
-                            </a>
-                            <a href="">
-                                <li class="border">
-                                  <div class="text">Монеты Европы</div>
-                                  <div class="item-img">
-                                      <img src="../assets/Menu/arrow.png" alt="">
-                                  </div>
-                                </li>
-                            </a>
+                            </router-link>
+                          
+                                <router-link to='/asia'>
+                                    <li class="border">
+                                        <div class="text">Монеты Азии</div>
+                                        <div class="item-img">
+                                            <img src="../assets/Menu/arrow.png" alt="">
+                                        </div>
+                                    </li>
+                                </router-link>
+
                       </ul>
         
                 </div>
@@ -99,11 +84,7 @@ export default {
                         :key="newss.article"
                         :news_list="newss"
                         />
-
-                        
-                        
                 </ul>
-        
         </div>
         </section>
     </div>
