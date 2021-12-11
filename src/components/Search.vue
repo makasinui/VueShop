@@ -1,13 +1,38 @@
 <script>
+import { mapActions, mapGetters } from "vuex"
 export default {
+    data(){
+        return{
+            searchValue:''
+        }
+    },
+    computed:{
+        ...mapGetters([
+            'SEARCH_VALUE'
+        ]),
+        inp(){
+            console.log(this.SEARCH_VALUE)
+            return this.SEARCH_VALUE
+        }
+    },
+    methods:{
+        ...mapActions([
+            'GET_SEARCH_VALUE_TO_VUEX'
+        ]),
+        search(value){
+            this.GET_SEARCH_VALUE_TO_VUEX(value)
+
+        }
+    }
 }
+
 </script>
 
 <template>
 
 <div>
-    <input type="text" name="" id="" placeholder="Поиск товаров..." class="input">
-    <img src="../assets/header/search.png" alt="Найти" class="search">
+    <input type="text" name="" id="" placeholder="Поиск товаров..." class="input" v-model="searchValue">
+    <img src="../assets/header/search.png" alt="Найти" class="search" @click="search(searchValue)">
 </div>
 </template>
 

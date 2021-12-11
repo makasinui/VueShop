@@ -1,5 +1,5 @@
 <script>
-
+import { mapActions } from "vuex"
 export default {
   modules:{
 
@@ -21,9 +21,16 @@ export default {
     }
   },
   computed:{
+        ...mapActions([
+        'REMOVE_FROM_CART'
+    ])
   },
   mounted(){
-
+  },
+  methods:{
+    deleteFromCart(){
+      this.$emit('deleteFromCart')
+    }
   }
 }
 
@@ -44,7 +51,7 @@ export default {
     <div class="all">
       
     </div>
-    <button>Удалить</button>
+    <button @click.prevent="deleteFromCart()">Удалить</button>
   </div>
 </div>
 </template>
@@ -62,6 +69,7 @@ export default {
     justify-content: center;
     width:50%;
     border:1px solid gray;
+    
   }
 
   .info{
@@ -75,7 +83,7 @@ export default {
   button{
     display: flex;
     justify-content: center;
-    margin-top: 3%;
+    margin-top: 6%;
     height:20px;
     align-items: center;
   }

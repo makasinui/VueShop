@@ -3,7 +3,10 @@ import axios from 'axios'
 import createPersistedState from 'vuex-persistedstate'
 export default createStore({
   state: {
+    searchValue:'',
     cart:[],
+    
+    cartCount:0,
     products:[],
     news_short:[],
     news:[],
@@ -12,8 +15,12 @@ export default createStore({
     products_asia:[]
   },
   mutations: {
+    SET_SEARCH_VALUE_TO_VUEX:(state,value) =>{
+      state.searchValue = value
+    },
     SET_CART:(state,product) =>{
       state.cart.push(product)
+      state.cartCount++
     },
     SET_NEWS_SHORT_TO_STATE:(state, news_short)=>{
       state.news_short = news_short;
@@ -32,9 +39,15 @@ export default createStore({
     },
     SET_PRODUCTS_ASIA_TO_STATE:(state, products_asia)=>{
       state.products_asia = products_asia
+    },
+    REMOVE_FROM_CART:(state, index)=>{
+        console.log(state,index)
     }
   },
   actions: {
+    GET_SEARCH_VALUE_TO_VUEX({commit}, value) {
+      commit('SET_SEARCH_VALUE_TO_VUEX',value)
+    },
     GET_NEWS_SHORT_FROM_API({commit}){
       return axios('https://json-servermakasinui.herokuapp.com/news_short', {
         method:"GET"
@@ -115,9 +128,15 @@ export default createStore({
   },
   ADD_TO_CART({commit}, product) {
     commit('SET_CART', product)
+  },
+  DELETE_FROM_CART({commit}, index){
+    commit('REMOVE_FROM_CART', index)
   }
 },
   getters:{
+    SEARCH_VALUE(state){
+      return state.searchValue
+    },
     NEWS_SHORT(state){
       return state.news_short;
     },

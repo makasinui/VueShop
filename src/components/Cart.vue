@@ -1,6 +1,6 @@
 <script>
 import CartItem from "./CartItem.vue"
-import { mapGetters } from "vuex"
+import { mapGetters, mapActions } from "vuex"
 export default {
   components:{
       CartItem
@@ -9,7 +9,8 @@ export default {
   data() {
       return {
           cart:0,
-          isOpen:false
+          isOpen:false,
+
   }
 },
 props:{
@@ -23,7 +24,25 @@ props:{
 computed:{
     ...mapGetters([
         'CART'
-    ])
+    ]),
+    ...mapActions([
+        'DELETE_FROM_CART'
+    ]),
+    cartTotalCost() {
+        let result = 0
+        for (let item of this.cart_data) {
+           result +=item.price
+        }
+        return result
+    }
+    
+},
+methods:{
+    deleteFromCart(index){
+        let vm = this.$store.state.cart
+        vm.splice(index,1)
+        this.$store.state.cartCount -=1
+    },
 }
 }
 
@@ -36,14 +55,28 @@ computed:{
     <div v-show="CART.length" class="dot">•</div>
     <div class="modal" v-show="isOpen">
         <div class="modal-show">
+            <div v-if="!CART.length" class="empty">
+                Пока ничего не добавлено
+            </div>
             <div class="close" @click.prevent="isOpen=!isOpen">
                 ✕
             </div>
             <div class="cart__item">
                 <CartItem
-                v-for="item in cart_data"
+                v-for="(item,index) in cart_data"
                 :key="item.article"
-                :cart_item_data="item" />
+                :cart_item_data="item"
+                @deleteFromCart="deleteFromCart(index)"
+                 />
+            </div>
+            <div v-show="CART.length" class="count">
+                Всего в корзине: {{$store.state.cartCount+1}}
+            </div>
+            <div v-show="CART.length" class="total">
+                Стоимость:{{cartTotalCost}} рублей
+            </div>
+            <div v-show="CART.length" class="buy">
+                <button>Купить</button>
             </div>
             
         </div>
@@ -53,6 +86,13 @@ computed:{
 </template>
 
 <style lang="scss" scoped>
+
+
+
+.empty{
+    font-size: 40px;
+    text-align: center;
+}
 
 .cart__item{
     margin-top: 5%;
@@ -66,6 +106,11 @@ computed:{
     font-size: 50px;
 }
 
+.count, .total{
+    font-size: 35px;
+    text-align: center;
+    margin-bottom:20px;
+}
 .cart{
     text-transform: uppercase;
     font-size: 18px;
@@ -77,6 +122,30 @@ computed:{
     }
 }
 
+.buy{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+button{
+    display: flex;
+    justify-content: center;
+    margin-top: 3%;
+    height:50px;
+    width:200px;
+    align-items: center;
+    font-size: 40px;
+    background-color:rgb(20, 199, 80);
+    border-radius: 10px;
+    border:0;
+    cursor:pointer;
+    &:hover{
+        transition:0.5s all;
+        background-color:rgb(29, 165, 74);
+    }
+    
+}
 .cart-num{
     background-color: red;
     border-radius: 50%;
