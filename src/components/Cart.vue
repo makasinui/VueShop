@@ -42,6 +42,7 @@ methods:{
         let vm = this.$store.state.cart
         vm.splice(index,1)
         this.$store.state.cartCount -=1
+        this.DELETE_FROM_CART
     },
 }
 }
@@ -70,7 +71,7 @@ methods:{
                  />
             </div>
             <div v-show="CART.length" class="count">
-                Всего в корзине: {{$store.state.cartCount+1}}
+                Всего в корзине: {{$store.state.cartCount}}
             </div>
             <div v-show="CART.length" class="total">
                 Стоимость:{{cartTotalCost}} рублей
