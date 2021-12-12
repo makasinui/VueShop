@@ -8,6 +8,7 @@ import News from '../components/Ns.vue'
 import CatalogSSSR from '../components/CatalogSSSR.vue'
 import CatalogRUS from '../components/CatalogRUS.vue'
 import CatalogASIA from '../components/CatalogASIA.vue'
+import AdminVue from '../components/Admin.vue'
 const routes = [
 
   {
@@ -54,6 +55,11 @@ const routes = [
     path:'/asia',
     name:'ASIA',
     component:CatalogASIA
+  },
+  {
+    path:'/admin',
+    name:'Admin',
+    component:AdminVue
   }
 ]
 

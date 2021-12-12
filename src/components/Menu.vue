@@ -75,7 +75,7 @@ export default {
         <div class="header">
             <a href="" @click.prevent="isNews=!isNews" class="menu_img"><img src="../assets/Menu/Newspaper.png" alt=""></a>
             <span class="title">Новости</span>
-            <a href="" class="all-news"><span class="title title-aside">Все новости</span></a>
+            <a href="" class="all-news"><router-link to='/news'><span class="title title-aside">Все новости</span></router-link></a>
         </div>
         <div class="item" v-show="isNews">
                 <ul>

@@ -10,6 +10,10 @@ export default {
       return {
           cart:0,
           isOpen:false,
+          buyModal:false,
+          email:'',
+          tel:'',
+          fio:''
 
   }
 },
@@ -44,6 +48,24 @@ methods:{
         this.$store.state.cartCount -=1
         this.DELETE_FROM_CART
     },
+    checkValues(){
+        this.buyModal = !this.buyModal
+        if(this.email.length < 3 || this.fio.length < 3 || this.tel.length <3)  {
+            alert(this.email, 'Некоторые поля не заполнены полностью"')
+        }
+
+        if(!this.email.indexOf('@')>-1) {
+            alert('Неверно введена почта')
+        }
+
+        if(!this.tel.indexOf('+7'>-1 )){
+            alert('Неверно введён телефон')
+        }
+        else{
+            alert('Удачно!')
+        }
+        
+    }
 }
 }
 
@@ -76,9 +98,21 @@ methods:{
             <div v-show="CART.length" class="total">
                 Стоимость:{{cartTotalCost}} рублей
             </div>
-            <div v-show="CART.length" class="buy">
-                <button>Купить</button>
+
+            <div v-show="CART.length" class="form">
+                <form class="form_contacts">
+                    <span>Ваш телефон</span>
+                    <input type="tel" name="" placeholder="+7" v-model="tel" id="">
+                    <span>Ваш email</span>
+                    <input type="email" name="" id="" v-model="email" placeholder="email...">
+                    <span>Ваше ФИО</span>
+                    <input type="text" name="" id="" v-model="fio" placeholder="ФИО...">
+                    <div class="buy">
+                        <a href="mailto:mks.shi@ya.ru"><button @click.prevent="checkValues">Купить</button></a>
+                    </div>        
+                </form>
             </div>
+
             
         </div>
     </div>
@@ -92,7 +126,22 @@ methods:{
 
 .empty{
     font-size: 40px;
-    text-align: center;
+}
+
+.form{
+    margin-top: 5%;
+    text-align:center;
+    font-size: 25px;
+    input{
+        width:12%;
+        margin:0 auto;
+    }
+}
+
+.form_contacts{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .cart__item{

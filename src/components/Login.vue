@@ -17,7 +17,7 @@ export default {
         check(){
             if(this.login=='admin' && this.password=='admin'){
                 this.correct = !this.correct
-                this.$router.push('/news')
+                this.$router.push('/admin')
             } else{
                 if(this.login!='' && this.password!='')
                 this.text = 'Неправильный логин/пароль'
