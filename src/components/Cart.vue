@@ -51,20 +51,8 @@ methods:{
     checkValues(){
         this.buyModal = !this.buyModal
         if(this.email.length < 3 || this.fio.length < 3 || this.tel.length <3)  {
-            alert(this.email, 'Некоторые поля не заполнены полностью"')
+            alert('Некоторые поля не заполнены полностью*')
         }
-
-        if(!this.email.indexOf('@')>-1) {
-            alert('Неверно введена почта')
-        }
-
-        if(!this.tel.indexOf('+7'>-1 )){
-            alert('Неверно введён телефон')
-        }
-        else{
-            alert('Удачно!')
-        }
-        
     }
 }
 }
@@ -101,11 +89,11 @@ methods:{
 
             <div v-show="CART.length" class="form">
                 <form class="form_contacts">
-                    <span>Ваш телефон</span>
-                    <input type="tel" name="" placeholder="+7" v-model="tel" id="">
-                    <span>Ваш email</span>
+                    <span>Ваш телефон*</span>
+                    <input type="tel" name="" placeholder="+7" v-model="tel" id="" maxlength="12">
+                    <span>Ваш email*</span>
                     <input type="email" name="" id="" v-model="email" placeholder="email...">
-                    <span>Ваше ФИО</span>
+                    <span>Ваше ФИО*</span>
                     <input type="text" name="" id="" v-model="fio" placeholder="ФИО...">
                     <div class="buy">
                         <a href="mailto:mks.shi@ya.ru"><button @click.prevent="checkValues">Купить</button></a>
@@ -142,6 +130,7 @@ methods:{
     display: flex;
     justify-content: center;
     flex-direction: column;
+    
 }
 
 .cart__item{
