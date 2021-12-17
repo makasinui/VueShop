@@ -140,7 +140,7 @@ methods:{
 .dot{
     position: absolute;
     top:20px;
-    right:113px;
+    right:103px;
     color:rgb(199, 55, 55);
     font-size: 50px;
 }
