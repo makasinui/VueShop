@@ -2,10 +2,13 @@ import { createStore } from 'vuex'
 import axios from 'axios'
 import createPersistedState from 'vuex-persistedstate'
 export default createStore({
-  state: {
+  /**
+   * Компонент VueX, предназначен для взаимодействия с данными, в целом, используется как хранилище данных
+   * 
+   */
+  state: { 
     searchValue:'',
     cart:[],
-    
     cartCount:0,
     products:[],
     news_short:[],
@@ -61,7 +64,7 @@ export default createStore({
         return error;
       })},
       
-    GET_PRODUCTS_FROM_API({commit}){
+    GET_PRODUCTS_FROM_API({commit}){ //Получение данных с json server при помощи библиотеки axios
       return axios('https://json-servermakasinui.herokuapp.com/products', {
         method:"GET"
       })

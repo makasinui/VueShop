@@ -9,12 +9,16 @@ import CatalogSSSR from '../components/CatalogSSSR.vue'
 import CatalogRUS from '../components/CatalogRUS.vue'
 import CatalogASIA from '../components/CatalogASIA.vue'
 import AdminVue from '../components/Admin.vue'
-const routes = [
+/**
+ * Компонент роутер для VUE JS, предназначен для создания SPA приложений
+ * Позволяет передвигаться по компонентам без перезагрузки
+ */
+const routes = [ 
 
   {
-    path: '/',
-    name: 'Main',
-    component: Main
+    path: '/', //path - путь
+    name: 'Main', //name - название
+    component: Main //component - компонент, на который нужно перейти
   },
   {
     path: '/about-us',

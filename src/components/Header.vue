@@ -31,21 +31,15 @@ export default {
             <div class="logo">
                <router-link to="/"><img src="../assets/header/logo.png" alt=""></router-link>
             </div>
-
             <div class="search">
                 <SearchVue />
             </div>
-
             <Login />
-
             <div class="cart">
                 <CartVue 
                 :cart_data='CART' />
             </div>
         </article>
-
-
-
         <article class="bottom">
             <nav class="menu">
                 <ul>
@@ -67,10 +61,6 @@ export default {
                 </ul>
             </nav>
         </article>
-        
-
-
-
     </div>
 </header>
 

@@ -17,7 +17,7 @@ export default {
 
   }
 },
-props:{
+props:{ //задаём входные значения
     cart_data:{
         type:Array,
         default(){
@@ -26,13 +26,13 @@ props:{
     }
 },
 computed:{
-    ...mapGetters([
+    ...mapGetters([ //получаем геттер корзины
         'CART'
     ]),
     ...mapActions([
-        'DELETE_FROM_CART'
+        'DELETE_FROM_CART' //метод для удаления товара с корзины
     ]),
-    cartTotalCost() {
+    cartTotalCost() { //функция, которая подсчитывает общее кол-во стоимости товара
         let result = 0
         for (let item of this.cart_data) {
            result +=item.price
@@ -42,13 +42,13 @@ computed:{
     
 },
 methods:{
-    deleteFromCart(index){
-        let vm = this.$store.state.cart
+    deleteFromCart(index){ //удаление товара с корзины
+        let vm = this.$store.state.cart //store - хранилище данных VUE, мы получаем конкретный элемень корзины, обращаясь к состоянию.
         vm.splice(index,1)
         this.$store.state.cartCount -=1
         this.DELETE_FROM_CART
     },
-    checkValues(){
+    checkValues(){ //валидация данных формы
         this.buyModal = !this.buyModal
         if(this.email.length < 3 || this.fio.length < 3 || this.tel.length <3)  {
             alert('Некоторые поля не заполнены полностью*')
@@ -66,15 +66,15 @@ methods:{
     <div v-show="CART.length" class="dot">•</div>
     <div class="modal" v-show="isOpen">
         <div class="modal-show">
-            <div v-if="!CART.length" class="empty">
+            <div v-if="!CART.length" class="empty"> <!--v-if директива, которая показывает элемент в случае если выполнено условие-->
                 Пока ничего не добавлено
             </div>
             <div class="close" @click.prevent="isOpen=!isOpen">
                 ✕
             </div>
-            <div class="cart__item">
+            <div class="cart__item"> <!--v-for - аналог for в обычном JS. :key - задаём уникальный ключ элемента. :cart_item_data - передаём пропсы-->
                 <CartItem
-                v-for="(item,index) in cart_data"
+                v-for="(item,index) in cart_data" 
                 :key="item.article"
                 :cart_item_data="item"
                 @deleteFromCart="deleteFromCart(index)"

@@ -29,7 +29,7 @@ export default {
   },
   methods:{
     deleteFromCart(){
-      this.$emit('deleteFromCart')
+      this.$emit('deleteFromCart') //emit - передаём нами созданое событие родителю
     }
   }
 }

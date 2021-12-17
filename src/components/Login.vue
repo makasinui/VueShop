@@ -17,7 +17,7 @@ export default {
         check(){
             if(this.login=='admin' && this.password=='admin'){
                 this.correct = !this.correct
-                this.$router.push('/admin')
+                this.$router.push('/admin') //переход на страницу администратора
             } else{
                 if(this.login!='' && this.password!='')
                 this.text = 'Неправильный логин/пароль'
@@ -31,8 +31,8 @@ export default {
 <template>
 
 <div class="modal" >
-    <span class="span"><a href="" @click.prevent="isOpen=!isOpen">Войти</a></span>
-    <div class="modal-" v-show="isOpen">
+    <span class="span"><a href="" @click.prevent="isOpen=!isOpen">Войти</a></span> <!--@click - создание события click, prevent - отменить стандартное поведение-->
+    <div class="modal-" v-show="isOpen"> <!--Директива v-show поазывает блок, если условие == true-->
         <div class="modal-show">
             <div class="text-head">
                 Войти
@@ -42,7 +42,7 @@ export default {
             </div>
             <div class="login">
                 <form action="" @submit.prevent="check">
-                    <input required type="text" v-model="login"  name="login" id="login" placeholder="Login"> *
+                    <input required type="text" v-model="login"  name="login" id="login" placeholder="Login"> * <!--v-model привязывает input к переменной-->
                     <input required type="password" v-model="password"  name="pass" id="pass" placeholder="Password"> * <br>
                     <button type="submit" value="Войти">Войти</button>
                 </form>

@@ -1,6 +1,6 @@
 <script>
 import NewsVue from "./News.vue"
-import { mapActions } from "vuex"
+import { mapActions } from "vuex" //файл index.js, используется для взаимодействия с JSON сервером, mapActions - методы, используемые для получения значений.
 export default {
   modules:{
       
@@ -46,7 +46,6 @@ export default {
                                   </div>
                               </li>
                           </router-link>
-                          
                             <router-link to='/rus'>
                                 <li class="border">
                                     <div class="text">Современная Россия</div>
@@ -55,7 +54,6 @@ export default {
                                     </div>
                                 </li>
                             </router-link>
-                          
                                 <router-link to='/asia'>
                                     <li class="border">
                                         <div class="text">Монеты Азии</div>
@@ -64,12 +62,9 @@ export default {
                                         </div>
                                     </li>
                                 </router-link>
-
                       </ul>
-        
                 </div>
             </transition>
-        
         </section>
         <section class="news">
         <div class="header">
