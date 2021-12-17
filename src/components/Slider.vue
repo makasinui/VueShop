@@ -28,7 +28,7 @@ data () {
       let sliderBody = this.$el.querySelector('.js-slider')
       let sliderSlidies = sliderBody.querySelectorAll('.js-slide')
 			// Записываем длину одного слайда для перелистывания
-      this.sliderOffsetStep = 1000
+      this.sliderOffsetStep = 1600
       
 			// Общее количество слайдов для стопов
       this.sliderAllCount = sliderSlidies.length
