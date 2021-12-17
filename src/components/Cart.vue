@@ -96,7 +96,7 @@ methods:{
                     <span>Ваше ФИО*</span>
                     <input type="text" name="" id="" v-model="fio" placeholder="ФИО...">
                     <div class="buy">
-                        <a href="mailto:mks.shi@ya.ru"><button @click.prevent="checkValues">Купить</button></a>
+                        <button @click.prevent="checkValues">Купить</button>
                     </div>        
                 </form>
             </div>
@@ -140,7 +140,7 @@ methods:{
 .dot{
     position: absolute;
     top:20px;
-    right:223px;
+    right:113px;
     color:rgb(199, 55, 55);
     font-size: 50px;
 }
