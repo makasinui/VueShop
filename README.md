@@ -19,6 +19,9 @@ npm run build
 ```
 npm run lint
 ```
-##Site on hosting: https://ecstatic-bell-31c5fa.netlify.app/##
+##Site on hosting: <br>
+```
+https://ecstatic-bell-31c5fa.netlify.app/
+```
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
